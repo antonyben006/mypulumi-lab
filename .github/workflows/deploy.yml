@@ -1,4 +1,4 @@
-name: Deploy with OIDC
+name: Deploy with GitHub OIDC
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   deploy:
-    name: Deploy with Pulumi OIDC
+    name: Deploy with Pulumi
     runs-on: ubuntu-latest
     
     steps:
@@ -23,16 +23,16 @@ jobs:
         with:
           node-version: 18
       
-      - name: Authenticate with Pulumi
+      - name: Authenticate with Pulumi using GitHub OIDC
         uses: pulumi/auth-actions@v1
         with:
           organization: antonyben006
           requested-token-type: urn:pulumi:token-type:access_token:organization
       
-      - name: Load ESC Environment
+      - name: Load AWS Credentials from ESC
         uses: pulumi/esc-action@v1
         with:
-          environment: antonyben006/aws-oidc-dev
+          environment: antonyben006/aws-github-oidc
           export-environment-variables: true
       
       - name: Install Dependencies
