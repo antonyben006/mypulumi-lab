@@ -1,7 +1,7 @@
 name: Destroy Infrastructure
 
 on:
-  workflow_dispatch:  # Manual trigger only
+  workflow_dispatch:
 
 jobs:
   destroy:
@@ -18,7 +18,6 @@ jobs:
           node-version: 18
       
       - name: Install Dependencies
-        working-directory: ./ppinfra
         run: npm install
       
       - name: Pulumi Destroy
@@ -26,7 +25,6 @@ jobs:
         with:
           command: destroy
           stack-name: antonyben006/myworkshop/dev
-          work-dir: ./ppinfra
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
