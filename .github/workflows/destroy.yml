@@ -1,7 +1,7 @@
 name: Destroy Infrastructure
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:  # ✅ Manual trigger ONLY - no automatic runs
 
 jobs:
   destroy:
