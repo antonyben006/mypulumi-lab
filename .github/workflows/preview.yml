@@ -20,7 +20,6 @@ jobs:
           node-version: 18
       
       - name: Install Dependencies
-        working-directory: ./ppinfra
         run: npm install
       
       - name: Pulumi Preview
@@ -28,7 +27,6 @@ jobs:
         with:
           command: preview
           stack-name: antonyben006/myworkshop/dev
-          work-dir: ./ppinfra
           comment-on-pr: true
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
